@@ -1,0 +1,7 @@
+.classpath
+.project
+.pydevproject
+.metadata/
+.recommenders/
+.setting/
+bin/
