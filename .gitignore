@@ -3,5 +3,5 @@
 .pydevproject
 .metadata/
 .recommenders/
-.settings/
+.settings
 bin/

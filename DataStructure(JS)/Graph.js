@@ -11,7 +11,7 @@ function Graph() {
     // 간선을 추가하는 메소드
     this.addEdge = function(v, w) {
         graph[v].push(w);
-        graph[w].push(v);
+        // graph[w].push(v);
     }
   
     this.bfs = function(start){
@@ -21,9 +21,11 @@ function Graph() {
         while(queue.length != 0){
             var current = queue.shift();
             visited.push(current);
+            console.log(current);
             for(neighbor of graph[current]){
-                if(visited.indexOf(neighbor) == -1){
-                    queue.push(neighbor)
+                if(visited.indexOf(neighbor) === -1){
+                    if(queue.indexOf(neighbor) === -1)
+                        queue.push(neighbor)
                 }
             }
         }
@@ -39,8 +41,9 @@ function Graph() {
             var current = stack.pop();
             visited.push(current)
             for(neighbor of graph[current].reverse()){
-                if(visited.indexOf(neighbor) == -1){
-                    stack.push(neighbor)
+                if(visited.indexOf(neighbor) === -1){
+                    if(stack.indexOf(neighbor) === -1)
+                        stack.push(neighbor)
                 }
             }
         }
@@ -54,22 +57,24 @@ function Graph() {
 
 
 var graph = new Graph();
-var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+// var myVertices = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+var myVertices = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 for (var i = 0; i < myVertices.length; i++) {
     graph.addVertex(myVertices[i]);
 }
 
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('C', 'D');
-graph.addEdge('C', 'G');
-graph.addEdge('D', 'G');
-graph.addEdge('D', 'H');
-graph.addEdge('B', 'E');
-graph.addEdge('B', 'F');
-graph.addEdge('E', 'I');
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(0, 3);
+graph.addEdge(0, 8);
+graph.addEdge(1, 2);
+graph.addEdge(3, 2);
+graph.addEdge(4, 8);
+graph.addEdge(5, 8);
+graph.addEdge(6, 5);
+graph.addEdge(8, 6);
+graph.addEdge(8, 7);
 
 console.log(graph.toString());
-console.log(graph.bfs('A'));
-console.log(graph.dfs('A'));
+console.log(graph.bfs(0));
+console.log(graph.dfs(0));
