@@ -13,12 +13,16 @@ function AllSort() {
     // 삽입 정렬 O(n^2)
     // 크기가 작은 배열이면 선택,버블 보다 성능이 우수하다.
     this.insertSort = function(array) {
-        for (var i = 1, size = array.length; i < size; i++) {
-            var temp = array[i];
-            for (var j = i - 1; j >= 0 && temp < array[j]; j--) {
-                array[j + 1] = array[j];
-            }
-            array[j] = temp;
+        var size = array.length,
+            j, temp;
+        for (var i = 1; i < size; i++) {
+           j = i;
+           temp = array[i];
+           while(j >0 && array[j-1] > temp){
+              array[j] = array[j-1];
+              j--;
+           }
+           array[j] = temp;
         }
     }
 
@@ -101,7 +105,7 @@ function AllSort() {
 
                 while (array[j] > pivot) {
                     j--;
-                }.
+                }
 
                 if (i <= j) {
                     swap(i, j)
@@ -128,7 +132,7 @@ function AllSort() {
     }
 }
 
-var array = [4, 1, 7, 8, 10, 20, 6, 2, 99, 9, 3, 15, 11, 21, 5, 19];
+var array = [234,45634,23,41,2345,34,23,1,4,3,6,234,4536,55,234,23,456,45,234,1,856,9,67,56,7];
 var sort = new AllSort();
 // sort.bubbleSort(array);
 // sort.insertSort(array);

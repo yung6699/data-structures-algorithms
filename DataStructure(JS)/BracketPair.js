@@ -4,8 +4,8 @@
  */
 
 function bracketPairCheck(element) {
-    var stack = [];
-    for (var i = 0, max = element.length; i < max; i++) {
+    const stack = [];
+    for (let i = 0, max = element.length; i < max; i++) {
         switch (element[i]) {
             case '(':
             case '{':
@@ -13,24 +13,21 @@ function bracketPairCheck(element) {
                 stack.push(element[i])
                 break;
             case ')':
-                if (stack.pop() != '(')
-                    return false
-                break;
             case '}':
-                if (stack.pop() != '{')
-                    return false
-                break;
             case ']':
-                if (stack.pop() != '[')
+                let open_ch = stack.pop();
+                if (open_ch === '(' && element[i] !==')'||
+                    open_ch === '{' && element[i] !=='}'||
+                    open_ch === '[' && element[i] !==']'){
                     return false
+                }
+                break;
+            default:
                 break;
         }
     }
 
-    if (stack.length == 0)
-        return true;
-    else
-        return false;
+    return (stack.length !== 0)? false : true;
 }
 
 console.log(bracketPairCheck('()()'));

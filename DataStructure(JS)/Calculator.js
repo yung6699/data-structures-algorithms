@@ -10,7 +10,9 @@ const Stack = require('./Stack').Stack
  */
 
 function calculator(element) {
-    return evalRPNExp(postfixChange(element));
+    var result = postfixChange(element);
+    console.log(result);
+    return evalRPNExp(result);
 }
 
 

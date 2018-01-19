@@ -1,12 +1,17 @@
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+var temp = numbers.map(function(value) {
+    return value + 2;
+})
+
+console.log(temp);
 
 // push 함수는 배열 맨 뒤에 삽입 할 때 쓴다.
 // 인자 갯수는 여러개 넣어도 상관없다.
 numbers.push(11);
 numbers.push(12, 13);
 
-// 배열이 가지고 있는 값의 인덱스값 찾기, 없으면 -1을 반환한다. 
+// 배열이 가지고 있는 값의 인덱스값 찾기, 없으면 -1을 반환한다.
 console.log(numbers.indexOf(7));
 console.log(numbers.indexOf(14));
 
@@ -68,7 +73,7 @@ console.log(numbers);
 
 console.log("-------------------------------------------------");
 /*
-    splice함수 인자 순서 -> 
+    splice함수 인자 순서 ->
     추가/삭제하려는 인덱스, 삭제할 원소 개수, 이후 배열로 추가할 나열된 원소들
     * splice 사용법은 알아두면 배열 자료구조 작성이 매우 도움이 된다.
  */
@@ -91,7 +96,7 @@ console.log("---------------------------------------------");
 // sort 함수는 정렬할 때 사용 한다.
 // a - b는 오름차순, b - a는 내림차순이다.
 var numbers03 = [4, 1, 7, 8, 10, 5, 6, 2, 9, 3, 15, 11, 21, 20];
-numbers03.sort(function(a, b) { console.log(a,b); return a - b; });
+numbers03.sort(function(a, b) { console.log(a, b); return a - b; });
 
 console.log(numbers03);
 
