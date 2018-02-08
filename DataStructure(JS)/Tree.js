@@ -1,5 +1,5 @@
 function BinarySearchTree(){
-    
+
     var Node = function(key){
         this.key = key;
         this.left = null;
@@ -20,8 +20,10 @@ function BinarySearchTree(){
     var insertNode = function(node, newNode){
         if(node.key > newNode.key){
             if(node.left == null){
+                // console.log("?????????????");
                 node.left = newNode;
             } else {
+                // console.log("//////////////////");
                 insertNode(node.left, newNode);
             }
         } else {
@@ -75,7 +77,7 @@ function BinarySearchTree(){
         return resultArray;
     }
 
-        
+
     // 트리의 최소값 찾기
     this.min = function(){
         return minNode(root);
@@ -90,7 +92,7 @@ function BinarySearchTree(){
         };
         return null;
     }
-        
+
     // 트리의 최대값 찾기
     this.max = function(){
         return maxNode(root)
@@ -114,7 +116,7 @@ function BinarySearchTree(){
         if(node === null){
             return false;
         }
-        
+
         if(node.key > key){
             return searchNode(node.left, key)
         } else if(node.key < key){
@@ -140,7 +142,7 @@ function BinarySearchTree(){
             node.right = removeNode(node.right, key);
             return node;
         } else {
-            
+
             // 리프 노드
             if(node.left === null && node.right === null){
                 node = null;
@@ -152,7 +154,7 @@ function BinarySearchTree(){
                 node = node.left;
                 return node;
             } else if(node.left !== null && node.right !== null){
-                // 이진 트리일 경우 
+                // 이진 트리일 경우
                 // 삭제한 노드의 하위 노드 중 최소값을 찾아 바꾼다.
                 // 그리고 최소값 노드를 삭제한다.
                 var aux = findMinNode(node.right);
@@ -181,18 +183,18 @@ tree.insert(15);
 tree.insert(5);
 tree.insert(3);
 tree.insert(9);
-tree.insert(8);
-tree.insert(10);
-tree.insert(13);
-tree.insert(12);
-tree.insert(14);
-tree.insert(20);
-tree.insert(18);
-tree.insert(25);
-tree.insert(6);
+// tree.insert(8);
+// tree.insert(10);
+// tree.insert(13);
+// tree.insert(12);
+// tree.insert(14);
+// tree.insert(20);
+// tree.insert(18);
+// tree.insert(25);
+// tree.insert(6);
 
-tree.remove(11);
-tree.remove(3);
+// tree.remove(11);
+// tree.remove(3);
 
 console.log(tree.inOrderTraverse());  // 중위 순회
 console.log(tree.preOrderTraverse()); // 전위 순회
