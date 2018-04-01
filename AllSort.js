@@ -1,7 +1,7 @@
 function AllSort() {
 
     // 버블 정렬 O(n^2)
-    this.bubbleSort = function(array) {
+    this.bubbleSort = function (array) {
         for (var i = 0, size = array.length; i < size; i++) {
             for (var j = 0; j < size - 1; j++) {
                 if (array[j] > array[j + 1])
@@ -12,22 +12,22 @@ function AllSort() {
 
     // 삽입 정렬 O(n^2)
     // 크기가 작은 배열이면 선택,버블 보다 성능이 우수하다.
-    this.insertSort = function(array) {
+    this.insertSort = function (array) {
         var size = array.length,
             j, temp;
         for (var i = 1; i < size; i++) {
-           j = i;
-           temp = array[i];
-           while(j >0 && array[j-1] > temp){
-              array[j] = array[j-1];
-              j--;
-           }
-           array[j] = temp;
+            j = i;
+            temp = array[i];
+            while (j > 0 && array[j - 1] > temp) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = temp;
         }
     }
 
     // 선택정렬 O(n^2)
-    this.selectionSort = function(array) {
+    this.selectionSort = function (array) {
         for (var i = 0, size = array.length; i < size - 1; i++) {
             var min = i;
             for (var j = i + 1; j < size; j++) {
@@ -40,12 +40,12 @@ function AllSort() {
 
     // 병합 정렬 , 분할 정복 알고리즘
     // O(NLogN)
-    this.mergeSort = function(array) {
+    this.mergeSort = function (array) {
         divide(array);
     }
 
     // 분할하는 함수
-    var divide = function(array) {
+    var divide = function (array) {
         var length = array.length;
         if (length === 1) {
             return array;
@@ -58,7 +58,7 @@ function AllSort() {
     }
 
     // 병합 함수
-    var merge = function(left, right) {
+    var merge = function (left, right) {
         var result = [],
             il = 0,
             ir = 0;
@@ -83,7 +83,7 @@ function AllSort() {
     }
 
 
-    //퀵 정렬 , O(NlogN)
+      //퀵 정렬 , O(NlogN)
     //기억 할 것!!, 참고 : 윤성우 자료구조 퀵 소트, 파이썬 알고리즘
     //다만 기준을 잘 선택해야한다.
     this.quickSort = function(array) {
@@ -125,7 +125,7 @@ function AllSort() {
 
     }
 
-    var swap = function(index1, index2) {
+    var swap = function (index1, index2) {
         var temp = array[index1];
         array[index1] = array[index2];
         array[index2] = temp;

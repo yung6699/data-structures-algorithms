@@ -20,10 +20,8 @@ function BinarySearchTree(){
     var insertNode = function(node, newNode){
         if(node.key > newNode.key){
             if(node.left == null){
-                // console.log("?????????????");
                 node.left = newNode;
             } else {
-                // console.log("//////////////////");
                 insertNode(node.left, newNode);
             }
         } else {
