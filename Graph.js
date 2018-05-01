@@ -61,37 +61,45 @@ Graph.prototype.bfs = function(start) {
 
 Graph.prototype.dfs = function(start) {
 
+    const stack = [start];
+
     const vertices = this.vertices;
     vertices[start].visited = true
 
-    console.log(vertices[start].value);
-
-    for(neighbor of vertices[start].edge){
-        if(!vertices[neighbor].visited){
-            this.dfs(neighbor)
+    while(stack.length){
+        let current = stack.pop();
+        console.log(current);
+        const temp = vertices[current].edge.reverse();
+        for(neighbor of temp){
+            if(!vertices[neighbor].visited){
+                vertices[neighbor].visited = true;
+                stack.push(neighbor)
+            }
         }
     }
+
 }
 
 
 const graph = new Graph();
-const myVertices = ['A', 'B', 'C', 'D', 'E', 'F'];
+const myVertices = ['A', 'B', 'C', 'D', 'E', 'F','G','H','I'];
 for (var i = 0; i < myVertices.length; i++) {
     graph.addVertex(myVertices[i]);
 }
 
 
 graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
 graph.addEdge('A', 'D');
-graph.addEdge('A', 'E');
-graph.addEdge('B', 'C');
-graph.addEdge('D', 'E');
-graph.addEdge('E', 'F');
-graph.addEdge('E', 'C');
-graph.addEdge('C', 'F');
-
+graph.addEdge('B', 'E');
+graph.addEdge('B', 'F');
+// graph.addEdge('C', 'D');
+graph.addEdge('C', 'G');
+// graph.addEdge('D', 'G');
+graph.addEdge('D', 'H');
+graph.addEdge('E', 'I');
 graph.printGraph();
 
-graph.bfs('A');
-graph.resetVisited();
+// graph.bfs('A');
+// graph.resetVisited();
 graph.dfs('A');
