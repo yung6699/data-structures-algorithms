@@ -3,103 +3,93 @@
     BFS, DFS
  */
 
-function Graph(){
+function Graph() {
     this.vertices = {};
 }
 
-function GraphNode(value){
-    this.value = value;
+
+function Vertex() {
     this.edge = [];
     this.visited = false;
 }
 
-// 그래프의 정점을 추가하는 메소드
-Graph.prototype.addVertex = function(value){
-    this.vertices[value] = new GraphNode(value);
+
+Graph.prototype.addVertex = function (value) {
+    this.vertices[value] = new Vertex();
 }
 
-// 간선을 추가하는 메소드
-Graph.prototype.addEdge = function(v, w){
+
+Graph.prototype.addEdge = function (v, w) {
     this.vertices[v].edge.push(w);
     this.vertices[w].edge.push(v);
 }
 
+
 // 그래프 출력시
-Graph.prototype.printGraph = function() {
+Graph.prototype.printGraph = function () {
     for (let key in this.vertices) {
         console.log(key + " --> " + this.vertices[key].edge);
     }
 }
 
 // 검색을 위해 원상 복구
-Graph.prototype.resetVisited = function() {
-    for (let key in this.vertices) {
+Graph.prototype.resetVisited = function () {
+    for (var key in this.vertices) {
         this.vertices[key].visited = false;
     }
 }
 
 
-Graph.prototype.bfs = function(start) {
+Graph.prototype.bfs = function (V, result) {
+    var queue = [V];
+    var vertices = this.vertices;
+    vertices[V].visited = true;
 
-    const queue = [start];
-    const vertices = this.vertices;
-
-    vertices[start].visited = true;
 
     while (queue.length) {
-        let current = queue.shift();
-        console.log(current);
-        for (neighbor of vertices[current].edge) {
-            if (!vertices[neighbor].visited) {
-                vertices[neighbor].visited = true;
-                queue.push(neighbor)
+        var current = queue.shift();
+        result.push(current)
+        var array = vertices[current].edge;
+        for (var i = 0; i < array.length; i++) {
+            if (!vertices[array[i]].visited) {
+                vertices[array[i]].visited = true;
+                queue.push(array[i])
             }
         }
     }
+
+    return result;
 }
 
-
-Graph.prototype.dfs = function(start) {
-
-    const stack = [start];
-
-    const vertices = this.vertices;
-    vertices[start].visited = true
-
-    while(stack.length){
-        let current = stack.pop();
-        console.log(current);
-        const temp = vertices[current].edge.reverse();
-        for(neighbor of temp){
-            if(!vertices[neighbor].visited){
-                vertices[neighbor].visited = true;
-                stack.push(neighbor)
-            }
+Graph.prototype.dfs = function (V, result) {
+    var vertices = this.vertices;
+    vertices[V].visited = true;
+    result.push(V);
+    var array = vertices[V].edge;
+    for (var i = 0; i < array.length; i++) {
+        if (!vertices[array[i]].visited) {
+            this.dfs(array[i], result)
         }
     }
-
+    return result;
 }
 
 
 const graph = new Graph();
-const myVertices = ['A', 'B', 'C', 'D', 'E', 'F','G','H','I'];
+const myVertices = ['1', '2', '3', '4'];
 for (var i = 0; i < myVertices.length; i++) {
     graph.addVertex(myVertices[i]);
 }
 
 
-graph.addEdge('A', 'B');
-graph.addEdge('A', 'C');
-graph.addEdge('A', 'D');
-graph.addEdge('B', 'E');
-graph.addEdge('B', 'F');
-// graph.addEdge('C', 'D');
-graph.addEdge('C', 'G');
-// graph.addEdge('D', 'G');
-graph.addEdge('D', 'H');
-graph.addEdge('E', 'I');
+graph.addEdge(1, 2);
+graph.addEdge(1, 3);
+graph.addEdge(1, 4);
+graph.addEdge(2, 4);
+graph.addEdge(3, 4);
 graph.printGraph();
 
-// graph.bfs('A');
-// graph.resetVisited();
-graph.dfs('A');
+
+console.log(graph.bfs(1, []));
+graph.resetVisited();
+console.log(graph.dfs(1, []));

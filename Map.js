@@ -47,13 +47,13 @@ function Map() {
     }
 }
 
-exports.Map = Map;
-// var map = new Map();
-// map.set('yoon', 'yoon@gmail.com');
-// map.set('yoon01', 'yoon02@gmail.com');
-// map.set('yoon02', 'yoon03@gmail.com');
+// exports.Map = Map;
+var map = new Map();
+map.set('yoon', 'yoon@gmail.com');
+map.set('yoon01', 'yoon02@gmail.com');
+map.set('yoon02', 'yoon03@gmail.com');
 
-// console.log(map.keys());
-// console.log(map.values());
-// console.log(map.get('yoon01'));
-// console.log(map.getItems());
+console.log(map.keys());
+console.log(map.values());
+console.log(map.get('yoon01'));
+console.log(map.getItems());
