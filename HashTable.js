@@ -1,6 +1,9 @@
 /* 
   HashTable ( HashMap )
   Map(딕셔너리)로 만든다.
+
+  해시함수(hash function)란 데이터의 효율적 관리를 목적으로 임의의 길이의 데이터를 고정된 길이의 데이터로 매핑하는 함수입니다. 
+  이 때 매핑 전 원래 데이터의 값을 키(key), 매핑 후 데이터의 값을 해시값(hash value), 매핑하는 과정 자체를 해싱(hashing)라고 합니다.
 */
 
 function HashTable() {
@@ -8,7 +11,7 @@ function HashTable() {
 
   this.put = function (key, value) {
     var position = djb2HashCode(key);
-    
+
     if (table[position] === undefined) {
       table[position] = [];
     }
