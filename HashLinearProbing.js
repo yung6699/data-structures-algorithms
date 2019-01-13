@@ -49,7 +49,7 @@ function HashTable() {
     return undefined;
   };
 
-  
+
   this.remove = function (key) {
     var position = djb2HashCode(key);
 
@@ -70,13 +70,16 @@ function HashTable() {
     }
     return false;
   };
+
+
   this.print = function () {
     for (var i = 0; i < table.length; i++) {
       if (table[i] !== undefined) {
         console.log(i + " : " + table[i].join(' / '));
       }
     }
-  }
+  };
+
 }
 
 
@@ -88,6 +91,7 @@ function djb2HashCode(key) {
   return hash % 1013;
 }
 
+
 function ValuePair(key, value) {
   this.key = key;
   this.value = value;
@@ -96,6 +100,7 @@ function ValuePair(key, value) {
     return '[' + this.key + ' - ' + this.value + ']';
   }
 }
+
 
 var hash = new HashTable();
 hash.put('Gandalf', 'gandalf@gmail.com');

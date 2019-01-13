@@ -37,6 +37,7 @@ function HashTable() {
     return undefined;
   };
 
+
   this.remove = function (key) {
     var position = djb2HashCode(key);
 
@@ -54,15 +55,17 @@ function HashTable() {
       return true;
     }
     return false;
-  }
+  };  
 
+  
   this.print = function () {
     for (var i = 0; i < table.length; i++) {
       if (table[i] !== undefined) {
         console.log(i + " : " + table[i].join(' / '));
       }
     }
-  }
+  };
+
 }
 
 
